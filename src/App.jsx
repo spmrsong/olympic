@@ -180,21 +180,23 @@ const App = () => {
                 </tr>
               </thead>
               <tbody>
-                {countries.map((data) => {
-                  return (
-                    <tr key={data.id}>
-                      <td>{data.name}</td>
-                      <td>{data.gold}</td>
-                      <td>{data.silver}</td>
-                      <td>{data.bronze}</td>
-                      <td>
-                        <button onClick={() => deleteHandler(data.id)}>
-                          삭제
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
+                {countries
+                  .sort((a, b) => b.gold - a.gold)
+                  .map((data) => {
+                    return (
+                      <tr key={data.id}>
+                        <td>{data.name}</td>
+                        <td>{data.gold}</td>
+                        <td>{data.silver}</td>
+                        <td>{data.bronze}</td>
+                        <td>
+                          <button onClick={() => deleteHandler(data.id)}>
+                            삭제
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>
